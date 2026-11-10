@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaFacebook, FaInstagram, FaTwitter, FaEnvelope, FaLeaf } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTwitter, FaEnvelope,  } from "react-icons/fa";
 
 function Footer() {
   return (

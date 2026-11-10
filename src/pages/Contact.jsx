@@ -1,7 +1,9 @@
 
 import { useState } from 'react';
+import ContactForm from '../components/ContactForm';
 
 function Contact() {
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,10 +18,13 @@ function Contact() {
       ...formData,
       [e.target.name]: e.target.value
     });
+
+    setSubmitted(false);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+
     setSubmitted(true);
 
     setFormData({
@@ -31,81 +36,30 @@ function Contact() {
   }
 
   return (
-    <div>
-     
+    <div className="container my-5">
 
-      <section className="container my-5">
-        <div className="row justify-content-center">
-          <div className="col-md-7">
+      <div className="row justify-content-center">
+        <div className="col-md-7">
 
-            <h2 className="text-center mb-4">
-              Send Us a Message
-            </h2>
+          <h2 className="text-center mb-4">
+            Send Us a Message
+          </h2>
 
-            {submitted && (
-              <div className="alert alert-success">
-                Your message has been submitted!
-              </div>
-            )}
+          {submitted && (
+            <div className="alert alert-success">
+              Your message has been submitted!
+            </div>
+          )}
 
-            <form onSubmit={handleSubmit}>
+          <ContactForm
+            formData={formData}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
 
-              <div className="mb-3">
-                <label className="form-label">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  className="form-control"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  className="form-control"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">Subject</label>
-                <input
-                  type="text"
-                  name="subject"
-                  className="form-control"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">Message</label>
-                <textarea
-                  name="message"
-                  className="form-control"
-                  rows="4"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <button type="submit" className="btn btn-success w-100">
-                Send Message
-              </button>
-
-            </form>
-          </div>
         </div>
-      </section>
+      </div>
+
     </div>
   );
 }

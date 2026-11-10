@@ -1,5 +1,4 @@
 import { NavLink, Link } from "react-router-dom";
-import { FaLeaf } from "react-icons/fa";
 
 function Navbar() {
   return (
